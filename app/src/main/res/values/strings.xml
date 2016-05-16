@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Simple ToDoList</string>
+    <string name="action_settings">Settings</string>
+    <string name="options_exit">Exit</string>
+    <string name="options_newtask">New Task</string>
+    <string name="btnCancel">Cancel</string>
+    <string name="btnSave">Save</string>
+    <string name="btnDelete">Delete</string>
+</resources>
