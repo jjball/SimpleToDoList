@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     ListView theListView;
     int positionInListView;
     Context ctx = this;
-    //private DatabaseHandler taskData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
         loadTasksFromDB();
 
-        //theAdapter = new ArrayAdapter<String>(this, R.layout.row_layout, taskList); // If using given library
         theAdapter = new MyAdapter(this, taskList);
 
         theListView = (ListView) findViewById(R.id.theListView);
@@ -57,16 +55,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /*
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        */
     }
 
     @Override
@@ -84,9 +72,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        /*if (id == R.id.action_settings) {
-            return true;
-        }*/
+        
         if(id == R.id.exit_the_app){
             finish();
             return true;
@@ -100,18 +86,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    //Brings up the dialog to add a task to the list
     protected void addTaskToDo(){
         Intent getPopUpScreen = new Intent(MainActivity.this, Pop.class);
 
         final int result = 1;
-        //startActivity(new Intent(MainActivity.this, Pop.class));
 
         startActivityForResult(getPopUpScreen, result);
 
     }
 
 
+    //When the dialog to add or delete a task is finished, properly adds or removes the task to or from the list
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -140,10 +126,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Refreshes the Listview, updating any changed data
     protected void updateListViewData(){
         theAdapter.notifyDataSetChanged();
     }
 
+    //Brings up the prompt to delete a task
     public void promptDeleteTask(View view) {
         Intent getPopUpDelScreen = new Intent(MainActivity.this, PopDeleteItem.class);
 
@@ -153,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Puts all task string from the database into the List taskList
     protected void loadTasksFromDB(){
         Log.v("Start loadTasksFromDB", "success");
         int x = 0;
