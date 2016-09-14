@@ -63,13 +63,7 @@ public class Pop extends Activity {
         EditText usersTask = (EditText) findViewById(R.id.editTextUserTask);
 
         imm.hideSoftInputFromWindow(usersTask.getWindowToken(), 0);
-        /*if(this.getCurrentFocus() != null) {
-            imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-        }
-        else{
-            usersTask.requestFocus();
-            imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-        }*/
+        
     }
 
 }
